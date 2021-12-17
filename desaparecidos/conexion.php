@@ -7,7 +7,7 @@
 		private $hostBd = 'localhost';
 		private $nombreBd = 'desaparecidos';
 		private $usuarioBd = 'root';
-		private $passwordBd = '';
+		private $passwordBd = 'Shana0906MM';
 		
 		public function __construct()
 		{

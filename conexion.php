@@ -5,7 +5,7 @@ function conectarDB(){
     $servername = "localhost";
     $database = "desaparecidos";
     $username = "root";
-    $password = "";
+    $password = "Shana0906MM";
     
     //Crear la conexión
     $conn = mysqli_connect($servername,$username,$password,$database);

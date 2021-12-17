@@ -1,8 +1,8 @@
 <?php
 session_start();
 $_SESSION['localizacion'] = "Nuevo reporte";
-if(@$_SESSION['autentificado']!=TRUE)
-header('Location: login.php');
+if (@$_SESSION['autentificado'] != TRUE)
+  header('Location: login.php');
 ?>
 <!-- ======= HTML5 ======= -->
 <!DOCTYPE html>
@@ -27,38 +27,38 @@ include("consumidor.php");
   <br><br><br><br>
 
   <div class="container">
-    <form action="">
-
-
+    <form name="myFormElement" id="myFormElement">
       <div>
-        <div>
-          <label>Ultima Fecha</label>
-          <input type="date" class="form-control" name="date-1639683650582" access="false" id="date-1639683650582">
+        <div style="visibility: hidden;">
+          <label for="number">Ultima Fecha</label>
+          <input type="number" class="form-control" value="" name="id" id="id">
         </div>
         <div>
-          <label for="text-1639683659065">Nombre(s):</label>
-          <input type="text" class="form-control" name="text-1639683659065" access="false" id="text-1639683659065">
+          <label for="ultimaFecha">Ultima Fecha</label>
+          <input type="date" class="form-control" value="" name="ultimaFecha" id="ultimaFecha" required>
         </div>
         <div>
-          <label for="text-1639683659472">Apellido Paterno:&nbsp;</label>
-          <input type="text" class="form-control" name="text-1639683659472" access="false" id="text-1639683659472">
+          <label for="nombre">Nombre(s):</label>
+          <input type="text" class="form-control" value="" name="nombre" id="nombre" required>
         </div>
         <div>
-          <label for="text-1639683661728">Apellido Materno:&nbsp;</label>
-          <input type="text" class="form-control" name="text-1639683661728" access="false" id="text-1639683661728">
+          <label for="ape_pat">Apellido Paterno:&nbsp;</label>
+          <input type="text" class="form-control" value="" name="ape_pat" id="ape_pat" required>
         </div>
         <div>
-          <label for="autocomplete-1639683664472">Ultimo Pais:</label>
-          <select class="form-control" name="estado" id="estado" onchange="EstadoSel(this.value)">
-            <option value="MEXICO">MEXICO</option>
-            
+          <label for="ape_mat">Apellido Materno:&nbsp;</label>
+          <input type="text" class="form-control" value="" name="ape_mat" id="ape_mat" required>
+        </div>
+        <div>
+          <label for="ultimoPais">Ultimo Pais:</label>
+          <select class="form-control" name="ultimoPais" id="ultimoPais" required>
+            <option value="Mexico">Mexico</option>
           </select>
-
         </div>
-        <div class="formbuilder-select form-group field-estado">
-          <label for="estado" class="formbuilder-select-label">Estado:</label>
-          <select class="form-control" name="estado" id="estado" onchange="EstadoSel(this.value)">
-            <option value="NA">--Seleccionar Estado--</option>
+        <div>
+          <label for="ultimaEntidad">Ultima Entidad:</label>
+          <select class="form-control" name="ultimaEntidad" id="ultimaEntidad" required onchange="EstadoSel(this.value)">
+            <option value="">--Seleccionar Estado--</option>
             <?php
             foreach ($estados as $i) {
               echo  '<option value="' . $i['ultimaEntidad'] . '" id="' . $i['ultimaEntidad'] . '">' .  $i['ultimaEntidad'] . '</option>';
@@ -67,54 +67,100 @@ include("consumidor.php");
           </select>
         </div>
         <div>
-          <label for="text-1639683669581">Clave Entidad</label>
-          <input type="text" class="form-control" name="text-1639683669581" access="false" id="text-1639683669581">
+          <label for="claveEntidad">Clave Entidad</label>
+          <input type="text" class="form-control" value="" name="claveEntidad" id="claveEntidad" required>
         </div>
         <div>
-          <label for="autocomplete-1639683683793">Ultimo Municipio</label>
+          <label for="ultimoMunicipio">Ultimo Municipio</label>
+          <select type="text" class="form-control" value="" name="ultimoMunicipio" id="ultimoMunicipio" required>
+            <option value="">--Seleccionar Municipio--</option>
+          </select>
         </div>
         <div>
-          <label for="autocomplete-1639684484462" class="formbuilder-autocomplete-label">Origen:</label>
+          <label for="origen">Origen:</label>
+          <input type="text" class="form-control" value="" name="origen" id="origen" required>
         </div>
         <div>
-          <label for="autocomplete-1639684487136" class="formbuilder-autocomplete-label">Nacionalidad:</label>
+          <label for="nacionalidad">Nacionalidad:</label>
+          <input type="text" class="form-control" value="" name="nacionalidad" id="nacionalidad" required>
         </div>
         <div>
-          <label for="select-1639684497175" class="formbuilder-select-label">Sexo</label>
+          <label for="sexo">Sexo:</label>
+          <select type="text" class="form-control" value="" name="sexo" id="sexo" required>
+            <option value="">--Seleccionar --</option>
+            <option value="MUJER">Mujer</option>
+            <option value="HOMBRE">Hombre</option>
+            <option value="N/A">Helicoperto apache o cualquier otra mamada...</option>
+          </select>
         </div>
         <div>
-          <label for="text-1639684504491" class="formbuilder-text-label">Edad</label>
-          <input type="tel" class="form-control" name="text-1639684504491" access="false" maxlength="2" id="text-1639684504491">
+          <label for="edad">Edad:</label>
+          <input type="number" class="form-control" value="" name="edad" id="edad" required>
         </div>
         <div>
-          <label for="text-1639684510578" class="formbuilder-text-label">Autoridad Denuncia:</label>
-          <input type="text" class="form-control" name="text-1639684510578" access="false" id="text-1639684510578">
+          <label for="ultimoLugar">Ultimo Lugar Visto:&nbsp;</label>
+          <input type="text" class="form-control" value="" name="ultimoLugar" id="ultimoLugar" required>
         </div>
         <div>
-          <label for="text-1639684925273" class="formbuilder-text-label">Ultimo Lugar Visto:&nbsp;</label>
-          <input type="text" class="form-control" name="text-1639684925273" access="false" id="text-1639684925273">
+          <label for="autoridadDenuncia">Autoridad Denuncia:</label>
+          <input type="text" class="form-control" value="" name="autoridadDenuncia" id="autoridadDenuncia" required>
         </div>
         <div>
-          <label for="date-1639684513993" class="formbuilder-date-label">Fecha Denuncia</label>
-          <input type="date" class="form-control" name="date-1639684513993" access="false" id="date-1639684513993">
+          <label for="denunciaFecha">Fecha Denuncia</label>
+          <input type="date" class="form-control" value="" name="denunciaFecha" id="denunciaFecha" required>
         </div>
         <div>
-          <label for="autocomplete-1639684521466" class="formbuilder-autocomplete-label">Entidad De Denuncia</label>
+          <label for="entidadDenuncia">Entidad De Denuncia</label>
+          <input type="text" class="form-control" value="" name="entidadDenuncia" id="entidadDenuncia" required>
+        </div>
+      </div>
 
-        </div>
-
+      <div class="btnchido p-4">
+        <button onclick="register()" class="btn btn-secondary btn-lg">Ingresar nuevo Registro</button>
+      </div>
     </form>
-
+    <div id="output"></div>
 
   </div>
 
 
   <!-- ======= Fin nuevo ======= -->
   <script>
-    function EstadoSel(estado) {
+    function register() {
+
+      
+      var formElement = document.getElementById("myFormElement");
+      var request = new XMLHttpRequest();
+
+      request.open("POST", "desaparecidos/personas.php");
+      
+
+      request.send(new FormData(formElement));
+
+    }
+
+    async function EstadoSel(estado) {
       if (estado != "NA") {
-        document.getElementById("muni").innerHTML = estado;
+        const response = await fetch('desaparecidos/personas.php?estados&entidad=' + estado);
+        const municipios = await response.json();
+        var options = document.getElementById("ultimoMunicipio");
+        options.innerHTML = "";
+        var concat = '<option value="NA">--Seleccionar Municipio--</option>';
+        //console.log(municipios[0]['ultimoMunicipio']);
+        // echo  '<option value="' . $i['ultimaEntidad'] . '" id="' . $i['ultimaEntidad'] . '">' .  $i['ultimaEntidad'] . '</option>';
+        for (var i = 0; i < municipios.length; i++) {
+          concat += '<option value="' + municipios[i]["ultimoMunicipio"] + '">' + municipios[i]['ultimoMunicipio'] + '</option>';
+        }
+
+        options.innerHTML = concat;
+
+      } else {
+        //eliminar busqueda anterior
+        document.getElementById("municipio").innerHTML = '<option value="NA">--Seleccionar Municipio--</option>';
       }
+
+
+
     }
   </script>
   <!-- JS -->

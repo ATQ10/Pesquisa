@@ -1,6 +1,6 @@
 <?php
 function Liga()
 {
-    return "http://localhost/pesquisa/pesquisa/desaparecidos";
+    return "http://localhost/desaparecidos";
 }
 ?>
