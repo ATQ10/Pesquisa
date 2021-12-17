@@ -44,7 +44,7 @@ include("liga.php");
         <li class="list-group-item">ID:' . $i['id'] . '</li>
       </ul>
       <div class="card-body">
-        <a href="#" class="card-link">Ver Persona</a>
+        <a href="persona.php?id='.$i['id'].'" class="card-link">Ver Persona</a>
       </div>
     </div>';
     }
