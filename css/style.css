@@ -468,3 +468,7 @@ h1, h2, h3, h4, h5, h6 {
 .registro a:hover {
   color: #ff9800;
 }
+
+a[title="Hosted on free web hosting 000webhost.com. Host your own website for FREE."] { 
+  display: none; 
+}

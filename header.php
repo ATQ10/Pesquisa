@@ -14,7 +14,7 @@
           <li><a class="nav-link <?php if($_SESSION['localizacion']=='Inicio') echo 'active';?>" href="index.php">Inicio</a></li>
           <li><a class="nav-link <?php if($_SESSION['localizacion']=='Búsqueda') echo 'active';?>" href="buscar.php">Búsqueda</a></li>
           <li><a class="nav-link <?php if($_SESSION['localizacion']=='Nuevo reporte') echo 'active';?>" href="nuevo.php">Nuevo reporte</a></li>
-          <li><a class="nav-link <?php if($_SESSION['localizacion']=='Chat global') echo 'active';?>" href="chat.php">Chat global</a></li>
+          <li><a class="nav-link <?php if($_SESSION['localizacion']=='Chat Dinámico') echo 'active';?>" href="chat.php">Chat Dinámico</a></li>
           <?php
             if(@!$_SESSION['autentificado']){
           ?>
