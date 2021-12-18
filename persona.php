@@ -13,6 +13,16 @@ include("liga.php");
 include("consumidor.php");
 ?>
 <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+<!-- JS-->
+<script>
+    function enviar(id){
+        var comentario = document.getElementById('comentario').value;
+        if(comentario!="")
+            window.location="comentar.php?id="+id+"&comentario="+comentario;
+        else
+            alert("Agrega un comentario");
+    }
+</script>
 
 <body>
   <!-- ======= Header ======= -->
@@ -134,9 +144,66 @@ include("consumidor.php");
     height="500"
     src="mapa.php?ubicacion=<?php echo $ubicacion;?>">
 </iframe>
+<h1>Realizar comentario</h1>
+<span class="contenido"><STRONG>Comentar: </STRONG></span><br>
+<textarea id="comentario" style="width : 100%; " rows="5" maxlength="250" name="comentario"  placeholder="Agregue un comentario"></textarea>
+<br>
+<button onclick="enviar(<?php echo $_GET['id'];?>);"  class="boton-link2">
+  <STRONG>Enviar</STRONG>
+</button>
 </div>
     </div>
+  <div class="row">
+    <div class="col-12">
+      <center>
+          <span class="contenido"><h1>Comentarios</h1></span>
+      </center>
+    </div>
+
+    <?php
+    //Conectar al servidor Mysql y a la base de datos
+    include ("conexion.php");
+    $conexion = conectarDB();
+    //Sentencia de consulta SQL
+    $result=0;
+    $sql = "SELECT comentar.*,usuario.nombre,usuario.ape_pat,usuario.ape_mat FROM comentar LEFT JOIN usuario ON usuario.idu = comentar.idu WHERE comentar.idp=".$_GET['id'];
+    $result = $conexion->query($sql);
+    if(!empty($result) && $result->num_rows > 0){
+        //Recorremos cada registro y obtenemos los valores
+        //de las columnas especificadas
+        while ($row = $result->fetch_assoc()){
+?>
+        <div class="col-lg-6">
+            <center>
+            <img src="img/desconocido.png" width="100px" height="100px"><br>
+            <span class="contenido"><?php echo $row['nombre']." ".$row['ape_pat']." ".$row['ape_mat'];?></span><br>
+            <span class="contenido">Con fecha de: <?php echo $row['fecha_hora'];?></span><br>
+            </center>
+        </div>
+        <div class="col-lg-6">
+            <center>
+            <span class="contenido"><?php echo $row['nombre']." dice:";?></span><br>
+            <span>
+              <blockquote>"<?php echo $row['comentario'];?>"</blockquote>
+            </span><br>
+            </center>
+        </div>
+        <div class="col-12">
+            <HR noshade size=5px width=100% COLOR=#FF7583 style="margin-top: 0px; border-top-width: 0px;">
+        </div>
+<?php
+        }
+    }else{    
+?>        
+        <div class="col-12">
+          <span class="contenido"><STRONG><center>Sin comentarios (Se el primero en comentar)</center></STRONG></span>
+        </div>
+<?php
+    }
+?>
+
   </div>
+</div>
 
 
   <!-- ======= Fin nuevo ======= -->
